@@ -1,0 +1,35 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+<ul class="pills">
+    <li class="active"><a href="#">Show all</a></li>
+    <li><a href="@{Users.create}">Add user</a></li>
+</ul>
+
+#{flash /}
+    
+<table class="zebra-striped">
+	<thead>
+	  <tr>
+	    <th>#</th>
+	    <th>E-mail/username</th>
+	    <th>Role</th>
+	    <th></th>
+	  </tr>
+	</thead>
+	<tbody>
+		#{list items:users, as:'user'}
+	   <tr>
+	     <td>${user.id}</td>
+	     <td>${user.email}</td>
+	     <td>${user.role}</td>
+	     <td>
+	     	<a href="@{Users.edit(user.id)}" class="btn small info">Edit</a>
+	     	<a href="@{Users.delete(user.id)}" class="btn small danger">Delete</a>
+	     </td>
+	   </tr>
+		#{/list}
+	</tbody>
+</table>
+      

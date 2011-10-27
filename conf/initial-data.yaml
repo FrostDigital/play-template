@@ -1,0 +1,5 @@
+# Password is SHA-256 encoded value for "qwerty"
+User(joel):
+    email: joel@frostdigital.se
+    password: 65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5
+    role: admin

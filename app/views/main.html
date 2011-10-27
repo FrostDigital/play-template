@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <title>#{get 'title' /}</title>
+
+        <link rel="stylesheet" type="text/css" href="@{'/public/bootstrap/bootstrap.css'}" />
+        <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}" />
+        #{get 'moreStyles' /}
+
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+
+        <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+    	<div class="topbar">
+	      <div class="topbar-inner">
+	        <div class="container">
+	          <a href="@{Application.index}" class="brand">Play template app</a>
+	          <ul class="nav">
+	          	#{check 'admin'}
+	            	<li class=""><a href="/users/list">Users</a></li>
+	            #{/check}
+	          	#{if session.username}
+	            	<li class=""><a href="/logout">Log out</a></li>
+	            #{/if}
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
+	    
+	    <div class="container">
+			<div class="content">
+	        	#{doLayout /}
+	    	</div>
+	    </div> 
+    </body>
+</html>
+
