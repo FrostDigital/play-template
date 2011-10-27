@@ -1,13 +1,14 @@
 Play template
 =============
 
-Ever heard of AppFuse? Well, this is a light equivalent of AppFuse but for Play Framework. You can use it as a base for new applications. 
+Ever heard of AppFuse? Well, this is a light equivalent of AppFuse but for Play Framework. You can use it as a base for new applications.
 
 Libraries and tools
 -------------------
 
-* Play Framework
-* Twitter Bootstrap
+* [Play Framework 1.2.3](http://www.playframework.org/)
+* [Play's Secure module](http://www.playframework.org/documentation/1.2.3/secure)
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 
 Getting started
 ---------------
@@ -20,6 +21,6 @@ Getting started
 Developer
 ---------
 
-Do you use Eclipse or IntelliJ? Then follow this (TODO: Add link to play framework doc) guide. 
+Do you use Eclipse or IntelliJ? Then follow [this guide](http://www.playframework.org/documentation/1.2.3/ide).
 
 
