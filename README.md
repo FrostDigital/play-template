@@ -13,7 +13,7 @@ Getting started
 ---------------
 
 1. $ git clone git@github.com:FrostDigital/play-template.git
-2. $ cd play template
+2. $ cd play-template
 3. $ play run
 4. Open http://localhost:9000 in a browser
 
