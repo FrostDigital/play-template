@@ -2,10 +2,18 @@
 
 #{flash /}
 
+#{if user.id}
 <h3>
-	#{if user.id} Edit user "${user.email}" #{/if}
-	#{else}Add user#{/else}
+	Edit user "${user.email}" 
 </h3>
+#{/if}
+#{else}
+<ul class="pills">
+    <li><a href="@{Users.list}">Show all</a></li>
+    <li class="active"><a href="@{Users.create}">Add user</a></li>
+</ul>
+#{/else}
+
 
 #{form @save()}
 	<input type="hidden" name="user.id" value="${user.id}" />
