@@ -15,6 +15,8 @@ import models.User;
 
 public class Security extends Secure.Security {
 	
+	public final static String ADMIN_ROLE = "admin";
+	
 	/**
 	 * Encoder used to encode raw passwords to SHA
 	 */
@@ -57,6 +59,17 @@ public class Security extends Secure.Security {
         return user.hasRole(role);
     }    
 	
+    static void onAuthenticated() {
+    	// Uncomment below to enable redirect based on 
+    	// authenticated users role
+    	
+    	/*
+        User user = User.find("byEmail", connected()).first();
+    	if(user.role.equals(ADMIN_ROLE)) {
+    		redirect("Users.list");
+    	}*/
+    }
+    
 	/**
 	 * Util method to encrypt given password.  
 	 * @param password
@@ -67,4 +80,6 @@ public class Security extends Secure.Security {
 		byte[] bytes = PASSWORD_ENCODER.digest();
 		return new String(Hex.encodeHex(bytes));
 	}
+	
+	
 }

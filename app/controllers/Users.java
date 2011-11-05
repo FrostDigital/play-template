@@ -12,7 +12,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 @With(Secure.class)
-@Check("admin")
+@Check(Security.ADMIN_ROLE)
 public class Users extends Controller {
 	
 	public static void list() {
@@ -28,23 +28,6 @@ public class Users extends Controller {
     public static void edit(Long id) {
     	User user = User.findById(id);
     	renderTemplate("/Users/form.html", user);
-    }
-    
-    public static void delete(Long id) {
-    	User user = User.findById(id);
-    	
-    	if(user != null) {
-    		if(user.email.equals(Security.connected())) {
-    			flash.error("Cannot delete yourself");
-    		} else {
-    			flash.success("User delete %s was removed", user.email);
-    			user.delete();
-    		}
-    		redirect("Users.list");
-    		return;
-    	}
-
-    	notFound("User with id " + id + " does not exist");
     }
 
     public static void save(@Valid User user, String newPassword, String confirmedPassword) {
@@ -65,4 +48,20 @@ public class Users extends Controller {
     	}
     }
 
+    public static void delete(Long id) {
+    	User user = User.findById(id);
+    	
+    	if(user != null) {
+    		if(user.email.equals(Security.connected())) {
+    			flash.error("Cannot delete yourself");
+    		} else {
+    			flash.success("User delete %s was removed", user.email);
+    			user.delete();
+    		}
+    		redirect("Users.list");
+    		return;
+    	}
+    	
+    	notFound("User with id " + id + " does not exist");
+    }
 }
