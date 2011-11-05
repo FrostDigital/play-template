@@ -1,7 +1,9 @@
 Play template
 =============
 
-Ever heard of AppFuse? Well, this is a light equivalent of AppFuse but for Play Framework. You can use it as a base for new applications.
+This is a template app to use as a boilerplate for your play app. It has simple role based authentication and user CRUD.
+
+Add or remove features that you need/don't need.
 
 Libraries and tools
 -------------------
@@ -18,9 +20,12 @@ Getting started
 3. $ play run
 4. Open http://localhost:9000 in a browser
 
-Developer
----------
+Setup your IDE
+--------------
 
 Do you use Eclipse or IntelliJ? Then follow [this guide](http://www.playframework.org/documentation/1.2.3/ide).
 
+License
+-------
 
+We use play-template in-house at [FrostDigital](http://frostdigital.se), but please feel free to use it however you'd like. 
