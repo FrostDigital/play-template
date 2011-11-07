@@ -28,4 +28,4 @@ Do you use Eclipse or IntelliJ? Then follow [this guide](http://www.playframewor
 License
 -------
 
-We use play-template in-house at [FrostDigital](http://frostdigital.se), but please feel free to use it however you'd like. 
+We use play-template in-house at [FrostDigital](http://frostdigital.se), but please feel free to use it however you'd like.

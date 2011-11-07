@@ -1,3 +1,11 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+#
+# Password reset
+#
+passwordReset.info=Enter your e-mail address. Further instruction on how you change password will be sent to you by e-mail. 
+passwordReset.sent=Further instructions was sent to your e-mail, please check your inbox. Note that it can take up to 5 minutes for mail to arrive.
+passwordReset.mail.subject=Instructions to reset your password
+passwordReset.mail.body=Visit this URL to reset your password: \n%s

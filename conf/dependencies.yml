@@ -3,4 +3,12 @@
 require:
     - play
     - play -> secure
+    - postmark -> postmark
 
+
+repositories:
+    - frost:
+        type: local
+        artifact: ${application.path}/../play-[module]
+        contains:
+          - postmark
