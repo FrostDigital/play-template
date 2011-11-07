@@ -9,3 +9,4 @@ passwordReset.info=Enter your e-mail address. Further instruction on how you cha
 passwordReset.sent=Further instructions was sent to your e-mail, please check your inbox. Note that it can take up to 5 minutes for mail to arrive.
 passwordReset.mail.subject=Instructions to reset your password
 passwordReset.mail.body=Visit this URL to reset your password: \n%s
+passwordReset.notFound=Cannot find any user with e-mail address '%s'

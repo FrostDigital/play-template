@@ -82,7 +82,7 @@ public class PasswordReset extends Model {
 				md5Digest = MessageDigest.getInstance("md5");
 			} catch (NoSuchAlgorithmException e) { 
 				/* Should not happen! */ 
-				Logger.error(e, "There is NOW WAY md5 does not exist");
+				Logger.error(e, "No algorithm for MD5 exists (WTF!?!)");
 			}
 		}
 		return md5Digest;
