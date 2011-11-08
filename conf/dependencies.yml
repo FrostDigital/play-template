@@ -3,12 +3,12 @@
 require:
     - play
     - play -> secure
-    - postmark -> postmark
+    - postmark -> postmark 0.1
 
 
 repositories:
     - frost:
-        type: local
-        artifact: ${application.path}/../play-[module]
+        type: http
+        artifact: "https://github.com/FrostDigital/module-repo/raw/master/[module]-[revision].zip"
         contains:
           - postmark
