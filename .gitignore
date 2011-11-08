@@ -5,3 +5,4 @@ eclipse
 tmp
 logs
 test-result
+modules/*
