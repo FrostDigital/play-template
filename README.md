@@ -17,11 +17,28 @@ Libraries and tools
 Getting started
 ---------------
 
-1. $ git clone git@github.com:FrostDigital/play-template.git
-2. $ cd play-template
-3. $ play deps --sync
-4. $ play run
-5. Open http://localhost:9000 in a browser
+    git clone git@github.com:FrostDigital/play-template.git
+    cd play-template
+    play deps --sync
+    play run
+
+Now you should be able to open **http://localhost:9000** in a browser.
+
+This app is intended to be a template for a new app. So it probably makes sense to remove all git meta data and create a new, separate git repository for the app:
+
+    # In dir above "play-template"
+    mv play-template my-new-app
+    
+    # Remove old git metadata
+    rm -rf my-new-app/.git
+	
+	# Init new git repo
+    git init
+    git add .
+    git commit -m 'first commit'
+    
+    # Configure to use any remote repo, ie at GitHub...
+
 
 Setup your IDE
 --------------
@@ -31,7 +48,7 @@ Do you use Eclipse or IntelliJ? Try [this guide](http://www.playframework.org/do
 License
 -------
 
-We use play-template in-house at [FrostDigital](http://frostdigital.se), but please feel free to use it however you'd like.
+We use play-template in-house at [FrostDigital](http://frostdigital.se), but it's open source. Feel free to use it however you'd like. It's under the [Apache 2 License](http://en.wikipedia.org/wiki/Apache_2_License).
 
 ### Library licenses
 
