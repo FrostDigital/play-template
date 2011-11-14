@@ -22,6 +22,8 @@ Getting started
     play deps --sync
     play run
 
+> Note: Currently there is a (bug)[https://play.lighthouseapp.com/projects/57987-play-framework/tickets/1107] related to Java 6- that causes an error with "play dep --sync". If you use Java 6 or lower please skip the --sync option. 
+
 Now you should be able to open **http://localhost:9000** in a browser.
 
 This app is intended to be a template for a new app. So it probably makes sense to remove all git meta data and create a new, separate git repository for the app:
