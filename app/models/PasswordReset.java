@@ -16,6 +16,7 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 import play.i18n.Messages;
 import play.modules.postmark.Postmark;
+import util.AppUtil;
 
 /**
  * <p>A PasswordReset is created when a user has forgotten his/her password 
@@ -37,9 +38,6 @@ import play.modules.postmark.Postmark;
 @Entity(name="password_reset")
 public class PasswordReset extends Model {
 	
-	private static MessageDigest md5Digest = null; 
-	
-
 	@Email
 	@Column(nullable=false)
 	public String email;
@@ -54,7 +52,7 @@ public class PasswordReset extends Model {
 	
 	public PasswordReset(String email) {
 		this.email = email;
-		this.token = generateToken();
+		this.token = AppUtil.generateToken(email);
 	}
 	
 	@PrePersist
@@ -62,32 +60,6 @@ public class PasswordReset extends Model {
 		// Create "created" timestamp on persist
 		this.created = new Date();
 	}
-	
-	/**
- 	 * Generate a unique token for this PasswordReset  
-	 * @return
-	 */
-	private String generateToken() {
-		String str = new StringBuilder().append(new Date().getTime()).append(this.email).toString();
-		return new String(getMd5Digest().digest(str.getBytes()));
-	}
-	
-	/**
-	 * Get instance of MessageDigest for MD5 encoding
-	 * @return
-	 */
-	private static MessageDigest getMd5Digest() {
-		if(md5Digest == null) {
-			try {
-				md5Digest = MessageDigest.getInstance("md5");
-			} catch (NoSuchAlgorithmException e) { 
-				/* Should not happen! */ 
-				Logger.error(e, "No algorithm for MD5 exists (WTF!?!)");
-			}
-		}
-		return md5Digest;
-	}
-	
 	
 	public static PasswordReset createAndSendMail(String email) {
 		PasswordReset pwReset = new PasswordReset(email);
