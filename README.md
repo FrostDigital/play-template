@@ -22,7 +22,7 @@ Getting started
     play deps --sync
     play run
 
-> Note: Currently there is a (bug)[https://play.lighthouseapp.com/projects/57987-play-framework/tickets/1107] related to Java 6- that causes an error with "play dep --sync". If you use Java 6 or lower please skip the --sync option. 
+> Note: Currently there is a [bug](https://play.lighthouseapp.com/projects/57987-play-framework/tickets/1107) related to Java 6- that causes an error with "play dep --sync". If you use Java 6 or lower please skip the --sync option. 
 
 Now you should be able to open **http://localhost:9000** in a browser.
 
