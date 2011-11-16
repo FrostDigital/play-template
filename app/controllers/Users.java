@@ -7,6 +7,8 @@ import models.User;
 import org.apache.commons.lang.StringUtils;
 
 import play.Logger;
+import play.data.validation.Equals;
+import play.data.validation.MinSize;
 import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -30,14 +32,7 @@ public class Users extends Controller {
     	renderTemplate("/Users/form.html", user);
     }
 
-    public static void save(@Valid User user, String newPassword, String confirmedPassword) {
-    	if(!StringUtils.isBlank(newPassword)) {
-    		validation.equals(newPassword, confirmedPassword).message("Passwords does not match");
-    	}
-    	else if(user.password == null) {
-    		validation.required("newPassword").message("A password must be entered");
-    	}
-    	
+    public static void save(@Valid User user, @MinSize(6) @Equals(value="confirmPassword", message="passwords.no-match") String newPassword, @MinSize(6) String confirmPassword) {
     	if(validation.hasErrors()) {
     		renderTemplate("/Users/form.html", user);
     	}

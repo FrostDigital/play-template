@@ -1,28 +1,16 @@
 #{extends 'main.html' /}
 
-	
 #{form @authenticate()}
 	<div class="row">
 		<div class="span10 offset1">
 			<fieldset>
 				<legend>Log in</legend>
-		
 				#{flash /}
 				
-				
-				<div class="clearfix">
-		            <label for="username">&{'secure.username'}</label>
-		            <div class="input">
-		              <input type="text" size="30" name="username" id="username" class="xlarge">
-		            </div>
-		         </div>
-				<div class="clearfix">
-		            <label for="username">&{'secure.password'}</label>
-		            <div class="input">
-		              <input type="password" size="30" name="password" id="password" class="xlarge">
-		            </div>
-		         </div>
-				<div class="clearfix">
+		         #{input code:'username', name:'username', cssClass:'xlarge', maxLength:'30' /}
+		         #{password code:'password', name:'password', cssClass:'xlarge' /}
+
+				 <div class="clearfix">
 		            <div class="input">
 						<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
 						&{'secure.remember'}
@@ -31,7 +19,7 @@
 		        
 				<div class="clearfix">
 		            <div class="input">
-		        	<p><a href="@{Application.createPasswordReset}">Forgot your password?</a></p>
+		        	<p><a href="@{Application.createPasswordReset}">&{'passwordReset.forgot-it'}</a></p>
 		        	</div>
 		        </div>
 		        
@@ -41,11 +29,10 @@
 			</fieldset>
 		</div>
 		<div class="span5">
-				<p>
-					<span class="label success">Psst...</span> Login with:<br/> Username: <strong>joel@frostdigital.se</strong>
-					<br/>Password: <strong>qwerty</strong>
-				</p>
+			<p>
+				<span class="label success">Psst...</span> Login with:<br/> Username: <strong>joel@frostdigital.se</strong>
+				<br/>Password: <strong>qwerty</strong>
+			</p>
 		</div>
-		
 	</div>
 #{/form}

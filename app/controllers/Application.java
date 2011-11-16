@@ -1,6 +1,11 @@
 package controllers;
 
 import play.*;
+import play.data.validation.Email;
+import play.data.validation.Equals;
+import play.data.validation.Min;
+import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.i18n.Messages;
 import play.mvc.*;
 
@@ -27,13 +32,18 @@ public class Application extends Controller {
 	 * 
 	 * @param email
 	 */
-    public static void createPasswordResetPOST(String email) {
+    public static void createPasswordResetPOST(@Required @Email String email) {
     	User user = User.find("byEmail", email).first();
     	
-    	if(user == null) {
-    		flash.error(Messages.get("passwordReset.notFound", email));
+    	if(!validation.hasErrors() && user == null) {
+    		validation.addError("email", "User not found");
+    	}
+    	
+    	if(validation.hasErrors()) {
+    		validation.keep();
     		redirect("Application.createPasswordReset");
     	}
+    	
     	else {
     		PasswordReset.createAndSendMail(email);
     		flash.success(Messages.get("passwordReset.sent"));
@@ -53,11 +63,10 @@ public class Application extends Controller {
      * Perform password reset if passwords are valid.
      * User will be redirected to login page on success.
      */
-    public static void resetPasswordPOST(String token, String password, String confirmPassword) {
+    public static void resetPasswordPOST(String token, 
+    		@MinSize(6) @Required @Equals(value="confirmPassword", message="passwords.no-match") String password, 
+    		@MinSize(6) @Required String confirmPassword) {
     	PasswordReset passwordReset = getPasswordReset(token);
-    	
-    	validation.required(password);
-    	validation.required(confirmPassword);
     	
     	User user = User.find("byEmail", passwordReset.email).first();
     	
@@ -67,6 +76,7 @@ public class Application extends Controller {
     		redirect("Secure.login");
     	}
     	
+    	validation.keep();
     	flash.error(Messages.get("passwordReset.reset.fail"));
     	resetPassword(token);
     }
