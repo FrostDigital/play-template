@@ -16,17 +16,17 @@ import play.i18n.Messages;
 import util.AppUtil;
 
 /**
- * <p>A PasswordReset is created when a user has forgotten his/her password 
+ * <p>A PasswordReset object is created when a user has forgotten his/her password 
  * and wants to reset it.</p>
  * 
- * <h5>Use case:</h5>
+ * <h5>User scenario:</h5>
  * 
  * <ol>
  * 	<li>User fill password reset form and enters her e-mail</li>
- *  <li>PasswordReset is created and a token is generated</li>
+ *  <li>PasswordReset is created with a generated, unique token</li>
  *  <li>E-mail is sent to user with a link that contains token</li>
  *  <li>User visit link and fills in new password</li>
- *  <li>Password reset is deleted</li>
+ *  <li>Password reset is deleted and users password is changed</li>
  * </ol>
  * 
  * @author joel
