@@ -5,3 +5,8 @@
 #   email: bob@gmail.com
 #   password: secret
 #   fullname: Bob
+
+User(joel):
+    email: joel@frostdigital.se
+    password: qwerty
+    fullname: Joel

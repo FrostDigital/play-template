@@ -15,7 +15,7 @@ public class AppUtilTest {
 	@Test
 	public void testGenerateToken() throws Exception {
 		String hash = AppUtil.generateToken("foobar");
-		Logger.info("%s", hash);
 		assertNotNull(hash);
+		Logger.info("%s", hash);
 	}
 }
