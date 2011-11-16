@@ -20,9 +20,9 @@ GET     /public/                                staticDir:public
 
 # Password reset
 GET		/password-reset						Application.createPasswordReset
-POST	/password-reset						Application.savePasswordReset
-GET		/password-reset/{token}				Application.resetPasssword
-#GET	/password-reset/{token}				Application.saveResetPasssword
+POST	/password-reset						Application.createPasswordResetPOST
+GET		/password-reset/{token}				Application.resetPassword
+POST	/password-reset/{token}				Application.resetPasswordPOST
 
 
 

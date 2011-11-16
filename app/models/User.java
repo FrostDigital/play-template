@@ -80,7 +80,16 @@ public class User extends Model {
 		active = true;
 		return super.save();
 	}
-
+	
+	public User updatePassword(String password, String confirmPassword) {
+		if(validatePassword(password, confirmPassword)) {
+			return save(password);
+		}
+		// Null indicated that passwords were invalid or save failed
+		return null; 
+	}
+	
+	
 	/**
 	 * Create new without a password. Instead an {@link #activationToken} will
 	 * be generated and an activation mail will be sent so that can activate 
@@ -102,6 +111,13 @@ public class User extends Model {
 	@Override
 	public <T extends JPABase> T save() {
 		throw new NotImplementedException("Use User.save(newPassword) or User.createUser() instead");
+	}
+	
+	private boolean validatePassword(String password, String confirmPassword) {
+		return !StringUtils.isBlank(password) 
+				&& !StringUtils.isBlank(confirmPassword)
+				&& password.equals(confirmPassword) 
+				&& password.length() > 5;
 	}
 	
 }

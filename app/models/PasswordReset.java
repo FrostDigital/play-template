@@ -1,7 +1,5 @@
 package models;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,12 +8,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import jobs.AsyncMailSender;
 import play.Logger;
 import play.data.validation.Email;
-import play.data.validation.Required;
 import play.db.jpa.Model;
 import play.i18n.Messages;
-import play.modules.postmark.Postmark;
 import util.AppUtil;
 
 /**
@@ -46,8 +43,16 @@ public class PasswordReset extends Model {
 	@Column(nullable=false)
 	public Date created;
 	
+	/**
+	 * Unique token used to identify this PasswordReset in URLs
+	 */
 	@Column(nullable=false, unique=true)
 	public String token;
+	
+	/**
+	 * If password reset has been used or has expired
+	 */
+	public boolean expired = false;
 	
 	
 	public PasswordReset(String email) {
@@ -61,10 +66,18 @@ public class PasswordReset extends Model {
 		this.created = new Date();
 	}
 	
+	public void expire() {
+		this.expired = true;
+		this.save();
+	}
+	
 	public static PasswordReset createAndSendMail(String email) {
 		PasswordReset pwReset = new PasswordReset(email);
+		new AsyncMailSender(email, Messages.get("passwordReset.mail.subject"), Messages.get("passwordReset.mail.body", pwReset.token)).now();
+		
+		Logger.info("Token: %s", pwReset.token);
+		
 		pwReset.save();
-		Postmark.sendMail(email, Messages.get("passwordReset.mail.subject"), Messages.get("passwordReset.mail.subject", pwReset.token));
 		return pwReset;
 		
 	}

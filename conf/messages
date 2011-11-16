@@ -8,5 +8,8 @@
 passwordReset.info=Enter your e-mail address. Further instruction on how you change password will be sent to you by e-mail. 
 passwordReset.sent=Further instructions was sent to your e-mail, please check your inbox. Note that it can take up to 5 minutes for mail to arrive.
 passwordReset.mail.subject=Instructions to reset your password
-passwordReset.mail.body=Visit this URL to reset your password: \n%s
+passwordReset.mail.body=Visit this URL to reset your password: \nhttp://localhost:9000/password-reset/%s
 passwordReset.notFound=Cannot find any user with e-mail address '%s'
+passwordReset.reset.success=OK! Your password has been updated. Please login with new password below.
+passwordReset.reset.fail=Could not reset password, please make sure that passwords are valid.
+passwordReset.na=Password reset does not exist or is not valid
