@@ -7,7 +7,7 @@ edit					= Edit
 delete					= Delete
 password				= Password
 confirmPassword			= Confirm password
-passwords.no-match		= Entered passwords does not match
+passwords.no-match		= Passwords does not match
 role					= Role
 save					= Save
 show-all				= Show all
@@ -38,9 +38,15 @@ user.save.success 			= Saved user %s
 user.invited				= An invitation has been sent to %s
 user.invite					= Invite user
 user.invite.already-exists	= User with e-mail already exists 
+user.invite.info 			= Fill in e-mail and role of user. An invitation will be sent to the users e-mail address.
+
 
 # 
 # Invitation
 #
+invitation					= User invitation
+invitation.info				= Please complete the form below in order to activate your account.
 invitation.mail.subject		= You have been invited to "My app name here"
 invitation.mail.body		= Visit this URL to register your account: \nhttp://localhost:9000/invitation/%s
+invitation.success			= You are now registered, please login with e-mail and password
+invitation.fail				= Could not complete invitation.

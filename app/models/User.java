@@ -120,4 +120,13 @@ public class User extends Model {
 				&& password.length() > 5;
 	}
 	
+	/**
+	 * Find user by given e-mail or null if non existing.
+	 * @param email
+	 * @return user or null
+	 */
+	public static User findByEmail(String email) {
+		return User.find("byEmail", email).first();
+	}
+	
 }

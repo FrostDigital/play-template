@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+
+#{flash /}
+
+<h3>&{'invitation'}</h3>
+
+<p>&{'invitation.info'}</p>
+
+#{form @Application.invitationPOST(invitation.token, password, confirmPassword)}
+	<div class="row">
+		<div class="span10">
+			<fieldset>
+				#{input code:'email', name:'email', cssClass:'large', disabled:'true', value: invitation.email /}
+				<hr />
+				
+				#{password code:'password', name:'password', cssClass:'large' /}
+				#{password code:'confirmPassword', name:'confirmPassword', cssClass:'large' /}
+		        
+		        <div class="actions">
+					<input type="submit" value="&{'save'}" class="btn primary" />
+		        </div>
+			</fieldset>
+		</div>
+	</div>
+#{/form}

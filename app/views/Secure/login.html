@@ -7,7 +7,7 @@
 				<legend>Log in</legend>
 				#{flash /}
 				
-		         #{input code:'username', name:'username', cssClass:'xlarge', maxLength:'30' /}
+		         #{input code:'username', name:'username', cssClass:'xlarge', maxLength:'30', value:flash.username /}
 		         #{password code:'password', name:'password', cssClass:'xlarge' /}
 
 				 <div class="clearfix">

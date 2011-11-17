@@ -11,10 +11,15 @@ import play.mvc.*;
 
 import java.util.*;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+
 import models.*;
 
 public class Application extends Controller {
-
+	
+	/**
+	 * Start page.
+	 */
     public static void index() {
         render();
     }
@@ -86,6 +91,19 @@ public class Application extends Controller {
      */
     public static void invitation(String token) {
     	Invitation invitation = getInvitation(token);
+    	
+    	if(User.findByEmail(invitation.email) != null) {
+    		// Handle case if user with given e-mail has been created 
+    		// since invitation was sent.
+    		flash.error(Messages.get("user.invite.already-exists"));
+    		invitation.expire();
+    		redirect("Application.index");
+    	}
+    	
+    	// Logout we have an ongoing session
+		session.clear();
+        response.removeCookie("rememberme");
+    	
     	render(invitation);
     }
     
@@ -98,14 +116,17 @@ public class Application extends Controller {
     	Invitation invitation = getInvitation(token);
     	
     	if(!validation.hasErrors()) {
-    		invitation.expire();
-    		flash.success(Messages.get("passwordReset.reset.success"));
+    		// Expire invitation so it can't be reused 
+    		// and create the new user
+    		invitation.expire().createUserFromInvitation(password);
+    		flash.put("username", invitation.email);
+    		flash.success(Messages.get("invitation.success"));
     		redirect("Secure.login");
     	}
     	
     	validation.keep();
-    	flash.error(Messages.get("passwordReset.reset.fail"));
-    	resetPassword(token);
+    	flash.error(Messages.get("invitation.fail"));
+    	invitation(token);
     }
     
     

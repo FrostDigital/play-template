@@ -47,11 +47,17 @@ public class Invitation extends Model {
 
 		return invitation;
 	}
-
-
-	public void expire() {
+	
+	public Invitation expire() {
 		this.expired = true;
-		this.save();
+		return this.save();
+	}
+	
+	public User createUserFromInvitation(String password) {
+		User u = new User();
+		u.email = email;
+		u.role = role;
+		return u.save(password);
 	}
 	
 }

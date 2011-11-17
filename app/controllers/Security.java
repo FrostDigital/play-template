@@ -81,5 +81,4 @@ public class Security extends Secure.Security {
 		return new String(Hex.encodeHex(bytes));
 	}
 	
-	
 }

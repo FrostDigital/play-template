@@ -32,7 +32,7 @@ public class AppUtil {
 			try {
 				md5Digest = MessageDigest.getInstance("md5");
 			} catch (NoSuchAlgorithmException e) { 
-				/* Should not happen! */ 
+				// Should not happen! 
 				Logger.error(e, "No algorithm for MD5 exists (WTF!?!)");
 			}
 		}
@@ -46,7 +46,5 @@ public class AppUtil {
 			return null;
 		}
 	}
-	
-	
 	
 }
