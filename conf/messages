@@ -27,4 +27,11 @@ passwordReset.reset.success	= OK! Your password has been updated. Please login w
 passwordReset.reset.fail	= Could not reset password, please make sure that passwords are valid.
 passwordReset.na			= Password reset does not exist or is not valid
 
-user.create	= Add user
+
+#
+# User settings & administration
+#
+user.create			= Add user
+user.delete.self 	= Cannot delete yourself
+user.delete.success = User %s was removed
+user.save.success 	= Saved user %s

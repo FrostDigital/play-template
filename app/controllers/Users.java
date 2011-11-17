@@ -10,6 +10,7 @@ import play.Logger;
 import play.data.validation.Equals;
 import play.data.validation.MinSize;
 import play.data.validation.Valid;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -38,7 +39,7 @@ public class Users extends Controller {
     	}
     	else {
     		user.save(newPassword);
-    		flash.success("Saved user %s", user.email);
+    		flash.success(Messages.get("user.save.success", user.email));
     		redirect("Users.list");
     	}
     }
@@ -48,9 +49,9 @@ public class Users extends Controller {
     	
     	if(user != null) {
     		if(user.email.equals(Security.connected())) {
-    			flash.error("Cannot delete yourself");
+    			flash.error(Messages.get("user.delete.self"));
     		} else {
-    			flash.success("User delete %s was removed", user.email);
+    			flash.success(Messages.get("user.delete.success", user.email));
     			user.delete();
     		}
     		redirect("Users.list");
