@@ -2,13 +2,16 @@ package controllers;
 
 import java.util.List;
 
+import models.Invitation;
 import models.User;
 
 import org.apache.commons.lang.StringUtils;
 
 import play.Logger;
+import play.data.validation.Email;
 import play.data.validation.Equals;
 import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.data.validation.Valid;
 import play.i18n.Messages;
 import play.mvc.Controller;
@@ -31,6 +34,29 @@ public class Users extends Controller {
     public static void edit(Long id) {
     	User user = User.findById(id);
     	renderTemplate("/Users/form.html", user);
+    }
+    
+    public static void invite() {
+    	render();
+    }
+
+    public static void invitePOST(@Email @Required String email, @Required String role) {
+    	// Make sure that user doesn't already exist
+    	if(User.find("byEmail", email).first() != null) {
+    		validation.addError("email", "user.invite.already-exists");
+    	}
+    	
+    	if(validation.hasErrors()) {
+    		params.flash();
+    		validation.keep();
+    		invite();
+    	}
+    	
+    	else {
+    		flash.success(Messages.get("user.invited", email));
+    		Invitation.create(email, role);
+    		redirect("Users.list");
+    	}
     }
 
     public static void save(@Valid User user, @MinSize(6) @Equals(value="confirmPassword", message="passwords.no-match") String newPassword, @MinSize(6) String confirmPassword) {

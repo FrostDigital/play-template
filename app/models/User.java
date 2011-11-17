@@ -20,11 +20,11 @@ public class User extends Model {
 	/**
 	 * Users e-mail address. Is used as username on login.
 	 */
-//	@Required @Email 
+	@Required @Email 
 	@Column(nullable=false, unique=true)
 	public String email;
 	
-//	@Required
+	@Required
 	@Column(nullable=false)
 	public String role;		// Might be a good idea to change this to an enum appropriate for your project
 	

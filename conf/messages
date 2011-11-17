@@ -31,7 +31,11 @@ passwordReset.na			= Password reset does not exist or is not valid
 #
 # User settings & administration
 #
-user.create			= Add user
-user.delete.self 	= Cannot delete yourself
-user.delete.success = User %s was removed
-user.save.success 	= Saved user %s
+user.create					= Add user
+user.delete.self 			= Cannot delete yourself
+user.delete.success 		= User %s was removed
+user.save.success 			= Saved user %s
+user.invited				= An invitation has been sent to %s
+user.invite					= Invite user
+user.invite.already-exists	= User with e-mail already exists 
+ 

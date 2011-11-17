@@ -8,10 +8,7 @@
 </h3>
 #{/if}
 #{else}
-<ul class="pills">
-    <li><a href="@{Users.list}">&{'show-all'}</a></li>
-    <li class="active"><a href="@{Users.create}">&{'user.create'}</a></li>
-</ul>
+	#{usersNav sel:'create' /}
 #{/else}
 
 #{form @save()}
