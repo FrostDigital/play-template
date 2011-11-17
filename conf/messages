@@ -1,11 +1,16 @@
 # 
 # Common stuff
 #
-username				= E-mail
 email					= E-mail
+username				= E-mail
+edit					= Edit
+delete					= Delete
 password				= Password
 confirmPassword			= Confirm password
 passwords.no-match		= Entered passwords does not match
+role					= Role
+save					= Save
+show-all				= Show all
 
 
 #
@@ -21,3 +26,5 @@ passwordReset.notFound		= Cannot find any user with e-mail address '%s'
 passwordReset.reset.success	= OK! Your password has been updated. Please login with new password below.
 passwordReset.reset.fail	= Could not reset password, please make sure that passwords are valid.
 passwordReset.na			= Password reset does not exist or is not valid
+
+user.create	= Add user

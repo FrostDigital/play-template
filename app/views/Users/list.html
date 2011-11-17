@@ -3,8 +3,8 @@
 
 
 <ul class="pills">
-    <li class="active"><a href="#">Show all</a></li>
-    <li><a href="@{Users.create}">Add user</a></li>
+    <li class="active"><a href="#">&{'show-all'}</a></li>
+    <li><a href="@{Users.create}">&{'user.create'}</a></li>
 </ul>
 
 #{flash /}
@@ -13,8 +13,8 @@
 	<thead>
 	  <tr>
 	    <th>#</th>
-	    <th>E-mail/username</th>
-	    <th>Role</th>
+	    <th>&{'username'}</th>
+	    <th>&{'role'}</th>
 	    <th></th>
 	  </tr>
 	</thead>
@@ -25,8 +25,8 @@
 	     <td>${user.email}</td>
 	     <td>${user.role}</td>
 	     <td>
-	     	<a href="@{Users.edit(user.id)}" class="btn small info">Edit</a>
-	     	<a href="@{Users.delete(user.id)}" class="btn small danger">Delete</a>
+	     	<a href="@{Users.edit(user.id)}" class="btn small info">&{'edit'}</a>
+	     	<a href="@{Users.delete(user.id)}" class="btn small danger">&{'delete'}</a>
 	     </td>
 	   </tr>
 		#{/list}
