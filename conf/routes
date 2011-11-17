@@ -14,11 +14,15 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 # User CRUD
-*       /users/create/{id}						Users.create
-*       /users/edit/{id}						Users.edit
-*       /users/delete/{id}						Users.delete
-GET     /users/invite							Users.invite
-POST    /users/invite							Users.invitePOST
+*       /users/create/{id}					Users.create
+*       /users/edit/{id}					Users.edit
+*       /users/delete/{id}					Users.delete
+GET     /users/invite						Users.invite
+POST    /users/invite						Users.invitePOST
+
+# User invitation
+GET		/invitation/{token}					Application.invitation
+POST	/invitation/{token}					Application.invitationPOST
 
 # Password reset
 GET		/password-reset						Application.createPasswordReset

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.UniqueConstraint;
 
+import jobs.AsyncMailSender;
+
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.StringUtils;
 
@@ -13,13 +15,14 @@ import play.data.validation.Email;
 import play.data.validation.Required;
 import play.db.jpa.JPABase;
 import play.db.jpa.Model;
+import play.i18n.Messages;
 import util.AppUtil;
 import controllers.Security;
 
 @Entity(name="invitation")
 public class Invitation extends Model {
 	
-	@Column(nullable=false, unique=true)
+	@Column(nullable=false)
 	public String email;
 	
 	@Column(nullable=false)
@@ -32,12 +35,23 @@ public class Invitation extends Model {
 	public boolean expired = false;
 	
 
-	public static Invitation create(String email, String role) {
+	public static Invitation createAndSendMail(String email, String role) {
 		Invitation invitation = new Invitation();
 		invitation.email = email;
 		invitation.role = role;
 		invitation.token = AppUtil.generateToken(email + new Date().getTime());
-		return invitation.save();
+		
+		invitation = invitation.save();
+		
+		new AsyncMailSender(email, Messages.get("invitation.mail.subject"), Messages.get("invitation.mail.body", invitation.token)).now();
+
+		return invitation;
+	}
+
+
+	public void expire() {
+		this.expired = true;
+		this.save();
 	}
 	
 }

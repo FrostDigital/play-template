@@ -38,4 +38,9 @@ user.save.success 			= Saved user %s
 user.invited				= An invitation has been sent to %s
 user.invite					= Invite user
 user.invite.already-exists	= User with e-mail already exists 
- 
+
+# 
+# Invitation
+#
+invitation.mail.subject		= You have been invited to "My app name here"
+invitation.mail.body		= Visit this URL to register your account: \nhttp://localhost:9000/invitation/%s

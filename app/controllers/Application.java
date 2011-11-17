@@ -80,11 +80,44 @@ public class Application extends Controller {
     	flash.error(Messages.get("passwordReset.reset.fail"));
     	resetPassword(token);
     }
+
+    /**
+     * Show invitation form for given {@link Invitation} object.
+     */
+    public static void invitation(String token) {
+    	Invitation invitation = getInvitation(token);
+    	render(invitation);
+    }
+    
+    /**
+     * Fulfil {@link Invitation}.
+     */
+    public static void invitationPOST(String token, 
+    		@MinSize(6) @Required @Equals(value="confirmPassword", message="passwords.no-match") String password, 
+    		@MinSize(6) @Required String confirmPassword) {
+    	Invitation invitation = getInvitation(token);
+    	
+    	if(!validation.hasErrors()) {
+    		invitation.expire();
+    		flash.success(Messages.get("passwordReset.reset.success"));
+    		redirect("Secure.login");
+    	}
+    	
+    	validation.keep();
+    	flash.error(Messages.get("passwordReset.reset.fail"));
+    	resetPassword(token);
+    }
     
     
     private static PasswordReset getPasswordReset(String token) {
     	PasswordReset pwReset = PasswordReset.find("byTokenAndExpired", token, false).first();
     	notFoundIfNull(pwReset, Messages.get("passwordReset.na"));
     	return pwReset;
+    }
+
+    private static Invitation getInvitation(String token) {
+    	Invitation invitation = Invitation.find("byTokenAndExpired", token, false).first();
+    	notFoundIfNull(invitation, Messages.get("invitation.na"));
+    	return invitation;
     }
 }

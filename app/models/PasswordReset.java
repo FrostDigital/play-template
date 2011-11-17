@@ -74,9 +74,6 @@ public class PasswordReset extends Model {
 	public static PasswordReset createAndSendMail(String email) {
 		PasswordReset pwReset = new PasswordReset(email);
 		new AsyncMailSender(email, Messages.get("passwordReset.mail.subject"), Messages.get("passwordReset.mail.body", pwReset.token)).now();
-		
-		Logger.info("Token: %s", pwReset.token);
-		
 		pwReset.save();
 		return pwReset;
 		
