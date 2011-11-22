@@ -11,8 +11,8 @@ import play.Logger;
 
 public class AppUtil {
 	
+	public static final String UTF_8 = "UTF-8";
 	private static MessageDigest md5Digest = null; 
-	private static final String UTF_8 = "UTF-8";
 	
 	/**
  	 * Generate a token from given string and current time stamp.  

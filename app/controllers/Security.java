@@ -10,6 +10,7 @@ import org.apache.commons.lang.CharSetUtils;
 import org.apache.commons.lang.StringUtils;
 
 import play.Logger;
+import util.AppUtil;
 
 import models.User;
 
@@ -76,9 +77,13 @@ public class Security extends Secure.Security {
 	 * @return
 	 */
 	public static String SHAEncrypt(String password) {
-		PASSWORD_ENCODER.update(password.getBytes());
-		byte[] bytes = PASSWORD_ENCODER.digest();
-		return new String(Hex.encodeHex(bytes));
+		try {
+			PASSWORD_ENCODER.update(password.getBytes(AppUtil.UTF_8));
+			byte[] bytes = PASSWORD_ENCODER.digest();
+			return new String(Hex.encodeHex(bytes));
+		} catch (UnsupportedEncodingException e) {
+			return null; // Cannot happen
+		}
 	}
 	
 }
