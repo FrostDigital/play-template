@@ -17,7 +17,7 @@ show-all				= Show all
 # Password reset
 #
 passwordReset				= Reset password
-passwordReset.forgot-it	= Forgot your password?
+passwordReset.forgot-it=Forgot your password?
 passwordReset.info			= Please enter your e-mail in order for us to send further details on how you reset your password. 
 passwordReset.sent			= Further instructions was sent to your e-mail, please check your inbox. Note that it can take up to 5 minutes for mail to arrive.
 passwordReset.mail.subject	= Instructions to reset your password
