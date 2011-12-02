@@ -14,7 +14,7 @@ import play.db.jpa.Model;
 import util.AppUtil;
 import controllers.Security;
 
-@Entity(name="app_user")
+@Entity/*(name="app_user")*/
 public class User extends Model {
 	
 	/**
