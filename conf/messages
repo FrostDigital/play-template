@@ -1,1 +1,1 @@
-#{include '/conf/messages.en' /} 
+#{include 'conf/messages.en' /} 
