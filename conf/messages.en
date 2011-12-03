@@ -3,16 +3,18 @@
 # 
 # Common stuff
 #
-email=E-mail
-username=E-mail
-edit=Edit
-delete=Delete
-password=Password
 confirmPassword=Confirm password
+delete=Delete
+edit=Edit
+email=E-mail
+login=Login
+logout=Logout
+password=Password
 passwords.no-match=Passwords does not match
 role=Role
 save=Save
 show-all=Show all
+username=E-mail
                          
 
 #
@@ -33,6 +35,8 @@ passwordReset.na=Password reset does not exist or is not valid
 #
 # User settings & administration
 #
+user=User
+users=Users
 user.create=Add user
 user.delete.self=Cannot delete yourself
 user.delete.success=User %s was removed

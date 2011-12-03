@@ -6,12 +6,49 @@
 #{flash /}
 
 <p>
-	This is a template app you can use as a base for new projects. This template includes login, and simple CRUD for users.
+	This is a template app you can use as a base for new play apps. This template includes login, and simple CRUD for users.
+</p>
+
+<h3>Stylesheets <small>with LESS</small></h3>
+
+<p>
+We are using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> for CSS building blocks. Please have a look at their excellent documentation. 
 </p>
 <p>
-	We are using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> for CSS building blocks. 
-	Please have a look at their documentation.
+	Twitter Bootstrap comes in two flavors: raw CSS and LESS (that is compiled to CSS). By default, this application uses LESS where <a href="http://www.playframework.org/modules/less">Play Less module</a> takes care of the compilation. All you need to do is to edit your <strong>.less</strong> files and reload the page to see any changes.
 </p>
+
+<blockquote>
+<p>NOTE: You may use plain CSS simply by changing link href to <code>/public/bootstrap/bootstrap.css</code> in <code>/views/main.html</code>. And if you do that it would make sense to remove dependency to Play Less module in <code>/conf/dependencies.yml</code></p>
+</blockquote>
+
+<h4>Files</h4>
+<pre>
+# TWITTER BOOTSTRAP FILES
+/public/bootstrap/lib/bootstrap.less    # entry point, aggregates all other TB files, is added to main.html layout
+/public/bootstrap/lib/forms.less        # forms
+/public/bootstrap/lib/mixins.less       # reusable chunks/functions of CSS 
+/public/bootstrap/lib/patterns.less     # repeatable UI elements outside the base styles provided from scaffolding
+/public/bootstrap/lib/reset.less        # eliminate browser inconsistencies 
+/public/bootstrap/lib/scaffolding.less  # styles for generating a grid system, structural layout, and page templates
+/public/bootstrap/lib/tables.less       # table styling
+/public/bootstrap/lib/type.less         # typography
+/public/bootstrap/lib/variables.less	# define grid/page size plus a lot more
+
+# APP STYLING
+/public/stylesheets/main.less           # your custom layout the use and extends TB
+</pre>
+
+<h3>Mail sending <small>with postmarkapp.com</small></h3>
+
+<p>Sending mail can be a hassle. It is tricky to send mail reliably, efficiently, and especially without it being marked as spam. And when deploying to cloud based hosting there is a good chance that sending mail from a local SMTP server doesn't work at all.</p>
+
+<p>That is why we use a 3rd party service for this. This costs money but this will save you much hassle. We use <a href="http://postmarkapp.com">postmarkapp.com</a> which requires you to setup an account. They will let you send 1k emails for free and after that it costs $1.50 / 1k emails sent.</p>
+
+<p>We have created a <a href="https://github.com/FrostDigital/play-postmark">separate module</a> for this which makes the integration trivial. All you need to do is to enter your API key in <code>/conf/application.conf: play.postmark.apiKey=XXXX</code>.</p>
+
+ 
+
 
 #{if !session.username}
 <p>Click <a href="/login">here</a> to login.</p>

@@ -23,10 +23,10 @@
 	          <a href="@{Application.index}" class="brand">Play template app</a>
 	          <ul class="nav">
 	          	#{check 'admin'}
-	            	<li class=""><a href="/users/list">Users</a></li>
+	            	<li class=""><a href="/users/list">&{'users'}</a></li>
 	            #{/check}
 	          	#{if session.username}
-	            	<li class=""><a href="/logout">Log out</a></li>
+	            	<li class=""><a href="/logout">&{'logout'}</a></li>
 	            #{/if}
 	          </ul>
 	        </div>
@@ -38,6 +38,12 @@
 	        	#{doLayout /}
 	    	</div>
 	    </div> 
+	
+		<footer>
+			<div class="container">
+				No copyright whatsoever :)
+			</div>
+		</footer>
     </body>
 </html>
 
