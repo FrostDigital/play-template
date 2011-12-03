@@ -1,16 +1,18 @@
 Play template
 =============
 
-This is a template app to use as a boilerplate for your play app. It has simple role based authentication and user CRUD.
+This is a template app to use as a boilerplate for your new play app. It has simple role based authentication and user CRUD.
 
 Add or remove features that you need/don't need.
 
 Libraries and tools
 -------------------
 
-* [Play Framework 1.2.3](http://www.playframework.org/)
+* [Play Framework 1.2.4](http://www.playframework.org/)
 * [Play's Secure module](http://www.playframework.org/documentation/1.2.3/secure)
 * [Postmark module](https://github.com/FrostDigital/play-postmark)
+* [Ajax upload module](https://github.com/FrostDigital/play-ajaxupload)
+* [LESS module](http://www.playframework.org/modules/less-0.3.compatibility/home)
 * [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 
 
@@ -19,12 +21,10 @@ Getting started
 
     git clone git@github.com:FrostDigital/play-template.git
     cd play-template
-    play deps --sync
+    play deps --sync 
     play run
 
-> Note: Currently there is a [bug](https://play.lighthouseapp.com/projects/57987-play-framework/tickets/1107) related to Java 6- that causes an error with "play dep --sync". If you use Java 6 or lower please skip the --sync option. 
-
-Now you should be able to open **http://localhost:9000** in a browser.
+> NOTE: When you deploy an application in production, you can reduce the size of its modules by removing module source code and documentation. You can do this by adding the **--forProd** option to the command, example: `play deps --sync --forProd`
 
 This app is intended to be a template for a new app. So it probably makes sense to remove all git meta data and create a new, separate git repository for the app:
 
