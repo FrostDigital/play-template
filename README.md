@@ -9,7 +9,7 @@ Libraries and tools
 -------------------
 
 * [Play Framework 1.2.4](http://www.playframework.org/)
-* [Play's Secure module](http://www.playframework.org/documentation/1.2.3/secure)
+* [Play's Secure module](http://www.playframework.org/documentation/1.2.4/secure)
 * [Postmark module](https://github.com/FrostDigital/play-postmark)
 * [Ajax upload module](https://github.com/FrostDigital/play-ajaxupload)
 * [LESS module](http://www.playframework.org/modules/less-0.3.compatibility/home)
