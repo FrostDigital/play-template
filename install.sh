@@ -1,13 +1,11 @@
 #!/bin/sh
-
-echo "Installing play-template app"
-
-echo "--- Checking system requirements..."
+#echo "--- Checking system requirements..."
 type -P play &>/dev/null  && continue  || { echo "ERROR: 'play' command not found."; exit 1; }
 type -P git &>/dev/null  && continue  || { echo "ERROR: 'git' command not found."; exit 1; }
-echo "--- OK!"
+#echo "--- OK!"
 
-app_name=$1
+read -p 'Enter application name (dir will be created with this name): ' app_name
+
 echo "--- Cloning play-template from github..."
 git clone git@github.com:FrostDigital/play-template.git $app_name >> /dev/null
 rc=$?
