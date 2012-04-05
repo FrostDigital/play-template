@@ -5,7 +5,7 @@ require:
     - play -> secure
     - play -> less 0.3.compatibility
     - play -> coffee 1.0
-    - postmark -> postmark 0.1.1
+    - play -> postmark 1.0
     - ajaxupload -> ajaxupload 0.1
 
 
@@ -14,5 +14,4 @@ repositories:
         type: http
         artifact: "http://frostdigital.github.com/module-repo/[module]-[revision].zip"
         contains:
-          - postmark
           - ajaxupload

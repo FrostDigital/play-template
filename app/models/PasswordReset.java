@@ -8,8 +8,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import jobs.AsyncMailSender;
-import play.Logger;
+import jobs.postmark.PostmarkSender;
+
 import play.data.validation.Email;
 import play.db.jpa.Model;
 import play.i18n.Messages;
@@ -73,7 +73,7 @@ public class PasswordReset extends Model {
 	
 	public static PasswordReset createAndSendMail(String email) {
 		PasswordReset pwReset = new PasswordReset(email);
-		new AsyncMailSender(email, Messages.get("passwordReset.mail.subject"), Messages.get("passwordReset.mail.body", pwReset.token)).now();
+		PostmarkSender.sendMail(email, Messages.get("passwordReset.mail.subject"), Messages.get("passwordReset.mail.body", pwReset.token));
 		pwReset.save();
 		return pwReset;
 		
